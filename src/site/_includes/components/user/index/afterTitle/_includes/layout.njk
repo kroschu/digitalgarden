@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%if description %}<meta name="description" content="{{ description }}">{% endif %}
+  <title>{% if title %}{{title}} —{% endif %} evolved systems</title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+  <link rel="manifest" href="/static/site.webmanifest">
+  <link rel="alternate" type="application/atom+xml" title="Subscribe to evolved.systems" href="https://evolved.systems/feed.xml">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@HDevo">
+  <meta property="og:url" content="{{post.url | url | absoluteUrl('https://evolved.systems/')}}">
+  <meta property="og:title" content="{% if title %}{{title}}{% else %}evolved.systems{% endif %}">
+  {%if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+  <meta property="og:image" content="https://evolved.systems/static/thumbnail.png">
+  <script>
+  (function() {
+    if (sessionStorage.fontsLoaded) {
+      document.documentElement.className += ' fonts-loaded';
+      return;
+    }
+    if (document.fonts) {
+      Promise.all([
+        document.fonts.load('1em "Basier Square"'),
+        document.fonts.load('500 1em "Basier Square"'),
+        document.fonts.load('italic 1em "Basier Square"'),
+        document.fonts.load('bold 1em "Basier Square"'),
+        document.fonts.load('1em "Iosevka Aile Web"'),
+      ]).then(function() {
+        document.documentElement.className += ' fonts-loaded';
+        sessionStorage.fontsLoaded = true;
+      });
+    }
+  })();
+  </script>
+  <script async defer data-domain="evolved.systems" src="https://analytics.evolved.systems/js/plausible.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="/" title="Return to home page">
+      {% include "logo.svg" %}
+    </a>
+  </header>
+  
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>Hello, this is the personal blog of&nbsp;Rafał&nbsp;Hirsz.</p>
+    <p>
+      <a href="https://twitter.com/HDevo" target="_blank">Follow me on Twitter</a>, 
+      <a href="https://matrix.to/#/#blogspace:evolved.systems" target="_blank">see all posts on Matrix</a> or <a href="https://matrix.to/#/#blog:evolved.systems" target="_blank">discuss the blog</a>.
+    </p>
+  </footer>
+</body>
