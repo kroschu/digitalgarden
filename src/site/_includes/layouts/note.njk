@@ -12,6 +12,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% for imp in dynamics.notes.head %}
       {% include imp %}
     {% endfor %}
+    <link rel="stylesheet" type="text/css" href="http://ngnx.m-e.pp.ua/mblog/matrix-live.css">
   </head>
   
   <body class="theme-{{meta.baseTheme}} markdown-preview-view markdown-rendered markdown-preview-section {{meta.bodyClasses}}">
