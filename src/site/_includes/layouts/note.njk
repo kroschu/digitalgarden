@@ -4,11 +4,6 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <link rel="stylesheet" type="text/css" href="http://ngnx.m-e.pp.ua/mblog/matrix-live.css">
-    <matrix-live homeserver="https://conduit.m-e.pp.ua"
-             room="!gpBYfchWjzdEbXCyvx:conduit.m-e.pp.ua"
-    initial-load="60">
-  </matrix-live>
     <title>{% if title %}{{ title }}{% else %}{{ page.fileSlug }}{% endif %}</title>
     {%include "components/pageheader.njk"%}
     {% for imp in dynamics.common.head %}
