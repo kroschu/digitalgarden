@@ -4,6 +4,11 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   <link rel="stylesheet" type="text/css" href="http://ngnx.m-e.pp.ua/mblog/matrix-live.css">
+    <matrix-live homeserver="https://conduit.m-e.pp.ua"
+             room="!gpBYfchWjzdEbXCyvx:conduit.m-e.pp.ua"
+    initial-load="60">
+  </matrix-live>
     <title>{% if title %}{{ title }}{% else %}{{ page.fileSlug }}{% endif %}</title>
     {%include "components/pageheader.njk"%}
     {% for imp in dynamics.common.head %}
@@ -12,7 +17,6 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% for imp in dynamics.notes.head %}
       {% include imp %}
     {% endfor %}
-    <link rel="stylesheet" type="text/css" href="http://ngnx.m-e.pp.ua/mblog/matrix-live.css">
   </head>
   
   <body class="theme-{{meta.baseTheme}} markdown-preview-view markdown-rendered markdown-preview-section {{meta.bodyClasses}}">
