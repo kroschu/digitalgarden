@@ -1,9 +1,3 @@
-
-
-{% if external_url %}
-<iframe src="{{ external_url }}" width="100%" height="500px">
+<iframe src=="{{ external_url }}" width="100%" height="500px">
   <p>Ваш браузер не поддерживает элемент iframe.</p>
 </iframe>
-{% else %}
-<p>No external URL provided.</p>
-{% endif %}
