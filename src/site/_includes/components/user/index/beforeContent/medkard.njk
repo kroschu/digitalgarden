@@ -1,3 +1,11 @@
- <iframe src={{ metatags }} width="100%" height="500px">
-  <p>Ваш браузер не поддерживает элемент iframe.</p>
-</iframe>
+{% if metatags.startsWith('https://') %}
+  <iframe src={{ metatags }} width="100%" height="500px">
+    <p>Ваш браузер не підтримує елемент iframe.</p>
+  </iframe>
+{% else %}
+  <div class="qqr--coode">
+    <img class="qr-code" 
+      src="https://chart.googleapis.com/chart?chs=110x110&amp;cht=qr&amp;chl=https://digitalgarden-virid.vercel.app/{{ page.url | replace('/', '', true) }}&amp;chco=284B63|FAF8F8&amp;chld=L|1" 
+      alt="QR Code">
+  </div>
+{% endif %}
