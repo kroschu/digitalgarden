@@ -4,9 +4,8 @@
       <p>Ваш браузер не підтримує елемент iframe.</p>
     </iframe>
   {% else %}
-    <div class="qqr--coode2">
      <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode2"></div>
+<div id="qrcode"></div>
 <script type="text/javascript">
   var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
@@ -17,12 +16,10 @@
     correctLevel : QRCode.CorrectLevel.L
   });
 </script>
-    </div>
   {% endif %}
 {% else %}
-    <div class="qqr--coode2">
      <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode2"></div>
+<div id="qrcode"></div>
 <script type="text/javascript">
   var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
@@ -33,5 +30,4 @@
     correctLevel : QRCode.CorrectLevel.L
   });
 </script>
-    </div>
 {% endif %}
