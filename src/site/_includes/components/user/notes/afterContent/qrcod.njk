@@ -1,7 +1,8 @@
-   <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode1"></div>
+    <div class="qqr--coode2">
+     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<div id="qrcode"></div>
 <script type="text/javascript">
-  var qrcode = new QRCode(document.getElementById("qrcode1"), {
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
     width: 110,
     height: 110,
@@ -9,3 +10,5 @@
     colorLight : "#FAF8F8",
     correctLevel : QRCode.CorrectLevel.L
   });
+</script>
+    </div>
