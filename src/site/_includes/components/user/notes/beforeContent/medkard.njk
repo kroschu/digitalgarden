@@ -5,14 +5,14 @@
     </iframe>
   {% else %}
 <style>
-  .qr-code {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  .qr-code-container {
+    text-align: center;
   }
 </style>
+<div class="qr-code-container">
+  <canvas id="qrcode"></canvas>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
-<canvas id="qrcode" class="qr-code"></canvas>
 <script type="text/javascript">
   var qrcode = new QRious({
     element: document.getElementById("qrcode"),
@@ -25,9 +25,15 @@
 </script>
   {% endif %}
 {% else %}
- <div class="qqr--coode">
- <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
-<canvas id="qrcode"></canvas>
+<style>
+  .qr-code-container {
+    text-align: center;
+  }
+</style>
+<div class="qr-code-container">
+  <canvas id="qrcode"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
 <script type="text/javascript">
   var qrcode = new QRious({
     element: document.getElementById("qrcode"),
