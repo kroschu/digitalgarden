@@ -4,9 +4,15 @@
       <p>Ваш браузер не підтримує елемент iframe.</p>
     </iframe>
   {% else %}
-<div class="qqr--coode">
+<style>
+  .qr-code {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
 <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
-<canvas id="qrcode"></canvas>
+<canvas id="qrcode" class="qr-code"></canvas>
 <script type="text/javascript">
   var qrcode = new QRious({
     element: document.getElementById("qrcode"),
@@ -17,7 +23,6 @@
     level: "L"
   });
 </script>
-</div>
   {% endif %}
 {% else %}
  <div class="qqr--coode">
