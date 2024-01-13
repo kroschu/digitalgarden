@@ -6,9 +6,9 @@
   {% else %}
     <div class="qqr--coode2">
      <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode"></div>
+<div id="qrcode2"></div>
 <script type="text/javascript">
-  var qrcode = new QRCode(document.getElementById("qrcode2"), {
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
     width: 110,
     height: 110,
@@ -22,9 +22,9 @@
 {% else %}
     <div class="qqr--coode2">
      <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode"></div>
+<div id="qrcode2"></div>
 <script type="text/javascript">
-  var qrcode = new QRCode(document.getElementById("qrcode2"), {
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
     width: 110,
     height: 110,
