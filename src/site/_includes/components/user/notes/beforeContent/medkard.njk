@@ -4,23 +4,6 @@
       <p>Ваш браузер не підтримує елемент iframe.</p>
     </iframe>
   {% else %}
-    <div class="qqr--coode">
-     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-<div id="qrcode"></div>
-<script type="text/javascript">
-  var qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
-    width: 110,
-    height: 110,
-    colorDark : "#284B63",
-    colorLight : "#FAF8F8",
-    correctLevel : QRCode.CorrectLevel.L
-  });
-</script>
-    </div>
-  {% endif %}
-{% else %}
-  <div class="qqr--coode">
 <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 <div id="qrcode"></div>
 <script type="text/javascript">
@@ -33,5 +16,18 @@
     correctLevel : QRCode.CorrectLevel.L
   });
 </script>
-  </div>
+  {% endif %}
+{% else %}
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<div id="qrcode"></div>
+<script type="text/javascript">
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
+    width: 110,
+    height: 110,
+    colorDark : "#284B63",
+    colorLight : "#FAF8F8",
+    correctLevel : QRCode.CorrectLevel.L
+  });
+</script>
 {% endif %}
