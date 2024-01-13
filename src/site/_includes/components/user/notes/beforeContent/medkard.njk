@@ -5,15 +5,33 @@
     </iframe>
   {% else %}
     <div class="qqr--coode">
-      <img class="qr-code" 
-        src="https://chart.googleapis.com/chart?chs=110x110&amp;cht=qr&amp;chl=https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}&amp;chco=284B63|FAF8F8&amp;chld=L|1" 
-        alt="QR Code">
+     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<div id="qrcode"></div>
+<script type="text/javascript">
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
+    width: 110,
+    height: 110,
+    colorDark : "#284B63",
+    colorLight : "#FAF8F8",
+    correctLevel : QRCode.CorrectLevel.L
+  });
+</script>
     </div>
   {% endif %}
 {% else %}
   <div class="qqr--coode">
-    <img class="qr-code" 
-      src="https://chart.googleapis.com/chart?chs=110x110&amp;cht=qr&amp;chl=https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}&amp;chco=284B63|FAF8F8&amp;chld=L|1" 
-      alt="QR Code">
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<div id="qrcode"></div>
+<script type="text/javascript">
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}",
+    width: 110,
+    height: 110,
+    colorDark : "#284B63",
+    colorLight : "#FAF8F8",
+    correctLevel : QRCode.CorrectLevel.L
+  });
+</script>
   </div>
 {% endif %}
