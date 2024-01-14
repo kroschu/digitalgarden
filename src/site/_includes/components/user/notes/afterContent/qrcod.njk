@@ -1,5 +1,8 @@
 <style>
   .qr-code-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
   }
 </style>
@@ -16,5 +19,6 @@
     colorLight : "#FAF8F8",
     correctLevel : QRCode.CorrectLevel.L
   });
+<img class="qr-code" src="https://chart.googleapis.com/chart?chs=110x110&amp;cht=qr&amp;chl=https://dg.stopbot.pp.ua/{{ page.url | replace('/', '', true) }}&amp;chco=284B63|FAF8F8&amp;chld=L|1" alt="QR Code"> 
 </script>
 
