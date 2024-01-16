@@ -13,15 +13,20 @@ jobs:
     name: Build PDF
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v3
+
       - name: Set up Docker
         run: docker pull fboaventura/dckr-pandoc
+
       - name: Generate PDF
         run: |
           docker run --rm \
+            -v ${{ github.workspace }}:/source \
+            -w /source \
             fboaventura/dckr-pandoc sh -c \
-            'pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans *.md -o output.pdf'
+            'pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans src/site/notes/*.md -o output/output.pdf'
+
       - name: Upload to artifact
         uses: actions/upload-artifact@v3
         with:
