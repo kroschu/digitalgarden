@@ -23,7 +23,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/data \
-            -w /source \
+            -w /data \
             fboaventura/dckr-pandoc sh -c \
             'pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans src/site/notes/*.md -o output/output.pdf'
 
