@@ -30,3 +30,9 @@ jobs:
         with:
           name: output
           path: src/site/output
+      - name: Deploy to GitHub Pages
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: ./src/site/output
+    cname: your-custom-domain.com  # Ð¯ÐºÑÐ¾ Ð²Ð¸ÐºÐ¾ÑÐ¸ÑÑÐ¾Ð²ÑÑÑÐµ ÑÐ²ÑÐ¹ Ð´Ð¾Ð¼ÐµÐ½
