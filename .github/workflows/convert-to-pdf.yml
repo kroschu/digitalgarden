@@ -22,7 +22,7 @@ jobs:
       - name: Generate PDF
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/source \
+            -v ${{ github.workspace }}:/data \
             -w /source \
             fboaventura/dckr-pandoc sh -c \
             'pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans src/site/notes/*.md -o output/output.pdf'
