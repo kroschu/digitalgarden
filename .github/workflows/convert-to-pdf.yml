@@ -17,8 +17,7 @@ jobs:
       - name: Set up Docker
         run: docker pull fboaventura/dckr-pandoc
       - name: Generate PDF
-        run:
-        docker run --name pandoc --rm \
+        run: docker run --rm \
    fboaventura/dckr-pandoc sh -c \
   'pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans *.md -o output.pdf'
       - uses: actions/upload-artifact@v3
