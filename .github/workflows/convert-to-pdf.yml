@@ -22,7 +22,7 @@ jobs:
       - name: Generate PDF
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/data \
+            -v ${{ github.workspace }}/src/site/notes:/data \
             -w /data \
             fboaventura/dckr-pandoc -c 'find . -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o pdfs/output.txt && pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans pdfs/output.txt -o pdfs/output.pdf'
 
