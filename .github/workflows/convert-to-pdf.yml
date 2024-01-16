@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'src/site/notes/**.md'
-      - 'src/site/notes/images/**'
+      - 'src/site/notes/**/**.md'
 
 jobs:
   converttopdf:
@@ -20,7 +20,7 @@ jobs:
         run: |
           docker run --name pandoc --rm \
             -v $(pwd):/data fboaventura/dckr-pandoc sh -c \
-            'find . -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o output/output.txt && pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans output/output.txt -o output/output.pdf'
+            'ls -la && find . -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o output/output.txt && pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans output/output.txt -o output/output.pdf'
       - uses: actions/upload-artifact@v3
         with:
           name: notes
