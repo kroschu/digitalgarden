@@ -11,9 +11,10 @@ on:
 jobs:
   convert_via_pandoc:
     name: Convert via Pandoc
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout repo
+        uses: actions/checkout@v3
       - run: mkdir output
       - name: Set up Docker
         run: docker pull fboaventura/dckr-pandoc
