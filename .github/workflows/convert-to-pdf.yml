@@ -23,8 +23,8 @@ jobs:
           docker run --rm \
             -v $(pwd)/src/site/notes:/data \
             fboaventura/dckr-pandoc sh -c '
-              find /data -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o output/output.txt
-              pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans output/output.txt -o output/output.pdf'
+              find /data -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o $(pwd)/output/output.txt
+              pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans $(pwd)/output/output.txt -o $(pwd)/output/output.pdf'
       - name: Upload PDF
         uses: actions/upload-artifact@master
         with:
