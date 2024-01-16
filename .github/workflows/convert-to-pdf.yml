@@ -1,15 +1,12 @@
-# .github/workflows/convert-to-pdf.yml
-
 name: Docs to PDF
-# This workflow is triggered on pushes to the repository.
+
 on:
   push:
     branches:
       - main
-    # Paths can be used to only trigger actions when you have edited certain files, such as a file within the /docs directory
     paths:
       - 'src/site/notes/**.md'
-      - 'src/site/notes/images/**'
+      - 'src/site/notes/**/**.md'
 
 jobs:
   converttopdf:
@@ -17,16 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: baileyjm02/markdown-to-pdf@v1
-        with:
-          input_dir: src/site/notes
-          output_dir: pdfs
-          images_dir: src/site/notes/images
-          # for example <img src="./images/file-name.png">
-          image_import: ./images
-          # Default is true, can set to false to only get PDF files
-          build_html: false
+      - name: Set up Docker
+        run: docker pull fboaventura/dckr-pandoc
+      - name: Generate PDF
+        run: |
+          docker run -it --name pandoc --rm \
+            -v $(pwd):/data fboaventura/dckr-pandoc sh -c \
+            'find . -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o output/output.txt && pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans output/output.txt -o output/output.pdf'
       - uses: actions/upload-artifact@v3
         with:
           name: notes
-          path: pdfs
+          path: output
