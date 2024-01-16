@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'src/site/notes/*.md'
+      - 'src/site/notes/**/*.md'
 
 jobs:
   converttopdf:
