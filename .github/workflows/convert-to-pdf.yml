@@ -1,5 +1,3 @@
-name: Docs to PDF
-
 on:
   push:
     branches:
@@ -30,10 +28,17 @@ jobs:
         with:
           name: output
           path: src/site/output
+
+  deploy_to_gh_pages:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: convert_via_pandoc
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
-          folder: src/site/output
-          token: ${{ secrets.DG.GITHUB_TOKEN }}
-          branch: gh-pages
-          clean: true
+          GITHUB_TOKEN: ${{ secrets.DG.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: src/site/output
