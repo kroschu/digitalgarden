@@ -41,5 +41,8 @@ jobs:
     needs: convert_via_pandoc
     runs-on: ubuntu-latest
     steps:
-      - name: Get GitHub Pages URL
-        run: echo "::set-output name=url::https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/output/output.pdf"
+      - name: Set Pages URL
+        id: set_pages_url
+        run: echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}output/output.pdf" >> $GITHUB_ENV
+      - name: Display Pages URL
+        run: echo "${{ steps.set_pages_url.outputs.PAGES_URL }}"
