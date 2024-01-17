@@ -30,11 +30,10 @@ jobs:
         with:
           name: output
           path: src/site/output
-      - name: Upload to FTP
-       uses: SoftInstigate/rest-ftp-action@v1
-       with:
-    server: ${{ secrets.FTP_SERVER }}
-    username: ${{ secrets.FTP_USERNAME }}
-    password: ${{ secrets.FTP_PASSWORD }}
-    local: src/site/output
-    remote: /path/on/ftp/server
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: src/site/output
+          token: ${{ secrets.DG.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
