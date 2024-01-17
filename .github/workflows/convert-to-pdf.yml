@@ -31,7 +31,7 @@ jobs:
           name: output
           path: src/site/output
       - name: Copy to root directory
-        run: cp -R src/site/output/* /github/workspace
+        run: cp -R src/site/output/* .
   get_pages_url:
     needs: convert_via_pandoc
     runs-on: ubuntu-latest
