@@ -30,14 +30,14 @@ jobs:
         with:
           name: output
           path: src/site/output
-      - name: Copy to output directory
-        run: cp -R src/site/output/* /github/workspace/src/site/output
+      - name: Copy to root directory
+        run: cp -R src/site/output/* /github/workspace
   get_pages_url:
     needs: convert_via_pandoc
     runs-on: ubuntu-latest
     steps:
       - name: Set Pages URL
         id: set_pages_url
-        run: echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}output/output.pdf" >> $GITHUB_ENV
+        run: echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}output.pdf" >> $GITHUB_ENV
       - name: Display Pages URL
         run: echo "${{ steps.set_pages_url.outputs.PAGES_URL }}"
