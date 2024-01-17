@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+      - run: mkdir output
       - name: Set up Docker
         run: docker pull fboaventura/dckr-pandoc
       - name: Generate PDF
@@ -22,18 +23,18 @@ jobs:
           docker run --rm \
             -v $(pwd)/src/site:/data \
             fboaventura/dckr-pandoc sh -c '
-              find /data/notes -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o /github/workspace/output/output.txt
-              pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans /github/workspace/output/output.txt -o /github/workspace/output/output.pdf'
+              find /data/notes -name "*.md" -print0 | xargs -0 pandoc --extract-media=. --to=plain --standalone --from=markdown+yaml_metadata_block+raw_html+tex_math_single_backslash -o $(pwd)/output/output.txt
+              pandoc --pdf-engine=xelatex --variable mainfont=DejaVuSans $(pwd)/output/output.txt -o $(pwd)/output/output.pdf'
       - name: Upload PDF and TXT
         uses: actions/upload-artifact@master
         with:
           name: output
-          path: /github/workspace/output
+          path: src/site/output
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAGES_TOKEN }}
-          publish_dir: /github/workspace/output
+          publish_dir: ./src/site/output
           cname: 2073.pp.ua
 
   get_pages_url:
@@ -42,6 +43,6 @@ jobs:
     steps:
       - name: Set Pages URL
         id: set_pages_url
-        run: echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/output/output.pdf" >> $GITHUB_ENV
+        run: echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}output/output.pdf" >> $GITHUB_ENV
       - name: Display Pages URL
         run: echo "${{ steps.set_pages_url.outputs.PAGES_URL }}"
