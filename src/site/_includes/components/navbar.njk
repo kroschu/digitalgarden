@@ -5,6 +5,7 @@
                 <h1 style="margin: 15px !important;">{{meta.siteName}}</h1>
             </a>
         </div>
+          {% include "components/myData.njk" %}
         {% if settings.dgEnableSearch === true%}
             {% include "components/searchButton.njk" %}
         {%endif%}
