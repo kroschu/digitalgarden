@@ -11,4 +11,8 @@
             {% include imp %}
         {% endfor %}
     </div>
+    
+    {% if settings.dgEnableSearch === true%}
+        {% include "components/searchButton.njk" %}
+    {%endif%}
 </nav>
