@@ -1,1 +1,48 @@
-<a href="https://2073.pp.ua/output.pdf" target="_blank">PDF.</a>
+<!-- Додайте бібліотеку іконок -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Створіть заголовок -->
+<h1>Завантажити файл бази знань</h1>
+
+<!-- Створіть кнопку завантаження -->
+<button class="btn" onclick="forceDownload(this)" data-href="https://2073.pp.ua/output.pdf" download="output.pdf"><i class="fa fa-download"></i> Завантажити</button>
+
+<!-- Додайте стиль кнопки -->
+<style>
+  .btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
+</style>
+
+<!-- Додайте функцію завантаження -->
+<script>
+  function forceDownload(link) {
+    var url = link.getAttribute("data-href");
+    var fileName = link.getAttribute("download");
+    link.innerText = "...";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function() {
+      var urlCreator = window.URL || window.webkitURL;
+      var imageUrl = urlCreator.createObjectURL(this.response);
+      var tag = document.createElement('a');
+      tag.href = imageUrl;
+      tag.download = fileName;
+      document.body.appendChild(tag);
+      tag.click();
+      document.body.removeChild(tag);
+      link.innerText="Завантажити";
+    }
+    xhr.send();
+  }
+</script>
