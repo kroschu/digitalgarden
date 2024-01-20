@@ -21,7 +21,13 @@
         </div>
         {%endif%}
     {% endmacro %}
-    
+    <div class="container">
+    <a href="https://main.stopbot.pp.ua" target="_blank">
+    <img src="https://2073.pp.ua/img/indposhyv.png" alt="Індпошив" class="image">
+     </a>
+    <h1 class="title"> Ваша база знань </h1>
+    </div>
+
     <div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
             x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" 
             x-data="{isDesktop: true, showFilesMobile: false}">
