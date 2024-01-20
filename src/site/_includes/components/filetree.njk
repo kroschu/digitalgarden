@@ -42,9 +42,9 @@
         {% for imp in dynamics.filetree.afterTitle %}
             {% include imp %}
         {% endfor %}
-        <a href="https://main.stopbot.pp.ua" style="text-decoration: none; display: block; text-align: center; margin-bottom: 10px;">
-            <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти" style="width: 154px; height: 154px; margin-bottom: -5px;">
-        </a>
+<a href="https://main.stopbot.pp.ua" style="text-decoration: none; display: inline-block; text-align: center; margin-bottom: 10px; border: 2px solid #4CAF50; padding: 10px; border-radius: 8px; background-color: #4CAF50; color: white; cursor: pointer;">
+    <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти" style="width: 154px; height: 154px; margin-bottom: -5px;">
+</a>
         <div class="folder" x-data="{isOpen: true}">
             {%- for fileOrFolderName, fileOrFolder in filetree -%}
                 {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
