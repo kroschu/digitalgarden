@@ -21,15 +21,9 @@
         </div>
         {%endif%}
     {% endmacro %}
-    <div class="container">
-    <a href="https://main.stopbot.pp.ua" target="_blank">
-    <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти майстра" class="image">
-     </a>
-    </div>
     <div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
             x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" 
             x-data="{isDesktop: true, showFilesMobile: false}">
-
         <div x-show.important="!isDesktop" style="display: none;">
             {%include "components/filetreeNavbar.njk"%}
         </div>
