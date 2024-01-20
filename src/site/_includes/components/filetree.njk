@@ -41,10 +41,6 @@
          </a>
          {% for imp in dynamics.filetree.afterTitle %}
             {% include imp %}
-            
-            <div style="display: flex; justify-content: center;">
-                {% include "components/buttonInstrumenty.njk" %}
-            </div>
     
          <div class="folder" x-data="{isOpen: true}">
                {%- for fileOrFolderName, fileOrFolder in filetree -%}
