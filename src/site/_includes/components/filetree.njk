@@ -1,16 +1,31 @@
-<!-- Додаємо контейнер для кнопки -->
-<div class="button-container">
-  <!-- Додаємо посилання на інший сайт -->
-  <a href="https://main.stopbot.pp.ua" target="_blank">
-    <!-- Додаємо зображення для кнопки -->
-    <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти майстра" class="button-image">
-  </a>
-</div>
-
-<!-- Ваш код для бокового меню -->
-<div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
+{% macro menuItem(fileOrFolderName, fileOrFolder, step, currentPath) %}
+    {%if fileOrFolder.isNote or fileOrFolder.isFolder%}
+        <div x-show="isOpen" style="display:none" class="{{'filelist' if step>0}}">
+            {%if fileOrFolder.isNote and not fileOrFolder.hide %}
+                <div @click.stop class="notelink {{ 'active-note' if fileOrFolder.permalink === permalink}}">
+                    {%- if not meta.noteIconsSettings.filetree -%}<i icon-name="sticky-note" aria-hidden="true"></i>{%- endif -%}
+                    <a data-note-icon="{{fileOrFolder.noteIcon}}" style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">{{fileOrFolder.name}} </a>
+                </div>
+            {% elif fileOrFolder.isFolder%}
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('{{currentPath}}')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">{{fileOrFolderName}}</span>
+                    </div>
+                    {% for fileOrFolderName, child in fileOrFolder %}
+                        {{menuItem(fileOrFolderName, child, step+1, (currentPath+"/"+fileOrFolderName))}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {%endif%}
+    {% endmacro %}
+    
+    <div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
             x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" 
             x-data="{isDesktop: true, showFilesMobile: false}">
+
         <div x-show.important="!isDesktop" style="display: none;">
             {%include "components/filetreeNavbar.njk"%}
         </div>
@@ -39,111 +54,3 @@
          </div>
       </nav>
     </div>
-
-<!-- Додаємо тег <style> для CSS стилів -->
-<style>
-/* Додаємо стилі для контейнера кнопки */
-.button-container {
-  /* Вирівнюємо контейнер по центру */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Додаємо відступи зверху та знизу */
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Додаємо стилі для зображення кнопки */
-.button-image {
-  /* Задаємо ширину та висоту зображення */
-  width: 100px;
-  height: 100px;
-  /* Заокруглюємо кути зображення */
-  border-radius: 50%;
-  /* Додаємо тінь для зображення */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* Додаємо ефект переходу при наведенні курсора */
-  transition: transform 0.3s;
-}
-
-/* Додаємо ефект збільшення зображення при наведенні курсора */
-.button-image:hover {
-  transform: scale(1.1);
-}
-</style>
-
-<!-- Додаємо тег <script> для JavaScript коду -->
-<script>
-function countLines () {
-  var theArea = document.getElementById ("textin");
-  var theLines = theArea.value;
-  theLines = theLines.split ("\n");
-  var finalLines = [];
-
-  var numLines = theLines.length;
-  for (var i = 0; i < numLines; i++) {
-    if (theLines [i].length > 40) {
-      if (theLines [i].match (/^. {0,38}\S {41}/)) {
-        theLines [i] = theLines [i].replace (/^ (. {40})/, "$1\n");
-        var newLines = [i,1].concat (theLines [i].split ("\n"));
-        numLines++;
-        Array.prototype.splice.apply (theLines, newLines);
-      } else {
-        theLines [i] = theLines [i].replace (/ (. {1,40} [^\S\n])/, "$1\n");
-        var newLines = [i,1].concat (theLines [i].split ("\n"));
-        numLines++;
-        Array.prototype.splice.apply (theLines, newLines);
-      }
-    }
-    finalLines.push (theLines [i]);
-  }
-
-  while (finalLines.length && finalLines [finalLines.length - 1].match (/^\s*$/)) {
-    finalLines.pop ();
-  }
-
-  theArea.form.lineCount.value = finalLines.length;
-
-  document.getElementById ("textout").value = finalLines.join ("\n");
-}
-
-var el = document.getElementById ("textin");
-if (el.addEventListener) {
-  el.addEventListener ("input", countLines, false);
-} else {
-  el.attachEvent ('onpropertychange', countLines);
-  el.attachEvent ('onkeypress', countLines);
-}
-
-var observe;
-if (window.attachEvent) {
-  observe = function (element, event, handler) {
-    element.attachEvent ('on' + event, handler);
-  };
-} else {
-  observe = function (element, event, handler) {
-    element.addEventListener (event, handler, false);
-  };
-}
-
-function init () {
-  var text = document.getElementById ('text');
-  function resize () {
-    text.style.height = 'auto';
-    text.style.height = text.scrollHeight + 'px';
-  }
-  /* 0-timeout to get the already changed text */
-  function delayedResize () {
-    window.setTimeout (resize, 0);
-  }
-  observe (text, 'change', resize);
-  observe (text, 'cut', delayedResize);
-  observe (text, 'paste', delayedResize);
-  observe (text, 'drop', delayedResize);
-  observe (text, 'keydown', delayedResize);
-
-  text.focus ();
-  text.select ();
-  resize ();
-}
-</script>
