@@ -1,0 +1,40 @@
+<!-- Створюємо окремий файл button.njk для коду кнопки -->
+<div class="button-container">
+  <!-- Додаємо посилання на інший сайт -->
+  <a href="https://main.stopbot.pp.ua" target="_blank">
+    <!-- Додаємо зображення для кнопки -->
+    <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти майстра" class="button-image">
+  </a>
+</div>
+
+<!-- Додаємо тег <style> для CSS стилів -->
+<style>
+/* Додаємо стилі для контейнера кнопки */
+.button-container {
+  /* Вирівнюємо контейнер по центру */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Додаємо відступи зверху та знизу */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Додаємо стилі для зображення кнопки */
+.button-image {
+  /* Задаємо ширину та висоту зображення */
+  width: 100px;
+  height: 100px;
+  /* Заокруглюємо кути зображення */
+  border-radius: 50%;
+  /* Додаємо тінь для зображення */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* Додаємо ефект переходу при наведенні курсора */
+  transition: transform 0.3s;
+}
+
+/* Додаємо ефект збільшення зображення при наведенні курсора */
+.button-image:hover {
+  transform: scale(1.1);
+}
+</style>
