@@ -9,6 +9,7 @@
     body {
       background-color: black;
       color: white;
+      margin: 0; /* Додавання нульових відступів для body */
     }
 
     .container {
@@ -18,8 +19,6 @@
       justify-content: center;
       min-height: 100vh;
     }
-    
-    
 
     .image {
       width: 80%;
@@ -27,10 +26,10 @@
     }
 
     .title {
-    color: #D81B60;
-    font-size: 2.1em; /* зменшити розмір шрифту на 30% */
-    margin-top: 20px;
-    text-align: center; /* вирівняти текст по центру */
+      color: #D81B60;
+      font-size: 1.47em; /* Зменшено розмір шрифту на 30% (врахувавши попередню зміну) */
+      margin-top: 20px;
+      text-align: center;
     }
 
     .btn {
@@ -41,21 +40,29 @@
       cursor: pointer;
       font-size: 1.5em;
       margin-top: 20px;
+      display: inline-block; /* Додано для блочного вигляду кнопки */
     }
 
     .btn:hover {
-      background-color: RoyalBlue;
+      background-color: royalblue; /* Змінено на малий регістр для кращої співмірності */
+    }
+
+    .return-link {
+      background-color: #F57F16;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
     }
   </style>
 </head>
 
 <body>
-  <a href="https://indposhyv.pp.ua/" style="background-color: #F57F16; position: absolute; top: 10px; left: 10px; padding: 10px; color: white; text-decoration: none;">Повернутись в майстерню</a>
+  <a href="https://indposhyv.pp.ua/" class="return-link">Повернутись в майстерню</a>
 
   <div class="container">
-<<<<<<< Updated upstream
-    <img src="https://2073.pp.ua/img/indposhyv.png" alt="Індпошив" class="image">
-=======
     <img src="./img/indposhyv.png" alt="Індпошив" class="image">
   </div>
 
