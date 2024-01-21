@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
   <meta charset="UTF-8">
@@ -29,7 +29,7 @@
     }
 
     .image {
-      width: 65%;
+      width: 80%; /* Зміна: збільшення ширини */
       max-width: 600px;
       height: auto;
       margin-bottom: 20px; /* Зміна: відстань від нижнього краю */
@@ -37,7 +37,7 @@
 
     .title {
       color: #D81B60;
-      font-size: 3em;
+      font-size: 2.5em; /* Зміна: зменшення розміру */
       margin-top: 10px; /* Зміна: зменшення відстані від заголовку */
       margin-bottom: 10px; /* Зміна: зменшення відстані від заголовку */
     }
@@ -48,7 +48,7 @@
       color: white;
       padding: 1em 2em;
       cursor: pointer;
-      font-size: 1.5em;
+      font-size: 1.3em; /* Зміна: зменшення розміру */
       margin-top: 10px; /* Зміна: зменшення відстані від кнопки */
     }
 
@@ -60,7 +60,6 @@
 
 <body>
   <a href="https://indposhyv.pp.ua/" style="background-color: #F57F16; position: absolute; top: 10px; left: 10px; padding: 10px; color: white; text-decoration: none;" rel="noopener noreferrer">Повернутись до майстерні</a>
-
   <div class="container">
     <img src="./img/indposhyv.png" alt="Індпошив" class="image">
     <h2 class="title">Завантажити файл бази знань</h2>
@@ -68,7 +67,6 @@
       <i class="fa fa-download"></i> Завантажити
     </button>
   </div>
-
   <script>
     function forceDownload(link) {
       var url = link.getAttribute("data-href");
