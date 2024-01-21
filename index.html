@@ -17,12 +17,18 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      text-align: center; /* Зміна: вирівнювання тексту по центру */
+      text-align: center;
+    }
+
+    .container::before {
+      content: "";
+      flex: 1;
     }
 
     .image {
-      width: 65%; /* Зміна: зменшення розміру картинки на 35% */
+      width: 65%;
       max-width: 600px;
+      height: auto; /* Зміна: збереження пропорцій картинки */
     }
 
     .title {
@@ -48,11 +54,11 @@
 </head>
 
 <body>
-<a href="https://indposhyv.pp.ua/" style="background-color: #F57F16; position: absolute; top: 10px; left: 10px; padding: 10px; color: white; text-decoration: none;">Повернутись до майстерні</a>
+  <a href="https://indposhyv.pp.ua/" style="background-color: #F57F16; position: absolute; top: 10px; left: 10px; padding: 10px; color: white; text-decoration: none;" rel="noopener noreferrer">Повернутись до майстерні</a>
 
   <div class="container">
     <img src="./img/indposhyv.png" alt="Індпошив" class="image">
-    <h1 class="title">Завантажити файл бази знань</h1>
+    <h2 class="title">Завантажити файл бази знань</h2>
     <button class="btn" onclick="forceDownload(this)" data-href="https://2073.pp.ua/output.pdf" download="output.pdf">
       <i class="fa fa-download"></i> Завантажити
     </button>
