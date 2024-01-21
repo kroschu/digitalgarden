@@ -42,22 +42,22 @@
         {% for imp in dynamics.filetree.afterTitle %}
             {% include imp %}
         {% endfor %}
-<div style="text-align: center;">
-    <a href="https://main.stopbot.pp.ua" style="text-decoration: none; display: inline-block; margin-bottom: 10px; position: relative; overflow: hidden; transform: scale(0.90);">
-        <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти" style="width: 140px; height: 140px; position: relative; z-index: 1; border: 2px solid #FFAB91; border-radius: 8px; transition: opacity 0.3s;">
-        <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFAB91; opacity: 0; z-index: 0;"></span>
-    </a>
-</div>
+        <div style="text-align: center;">
+            <a href="https://main.stopbot.pp.ua" style="text-decoration: none; display: inline-block; margin-bottom: 10px; position: relative; overflow: hidden; transform: scale(0.90);">
+                <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти" style="width: 140px; height: 140px; position: relative; z-index: 1; border: 2px solid #FFAB91; border-radius: 8px; transition: opacity 0.3s;">
+                <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFAB91; opacity: 0; z-index: 0;"></span>
+            </a>
+        </div>
         <div class="folder" x-data="{isOpen: true}">
             {%- for fileOrFolderName, fileOrFolder in filetree -%}
                 {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
             {%- endfor -%}
         </div>
-<div style="text-align: center;">
-    <a href="https://2073.pp.ua" style="text-decoration: none; display: inline-block; margin-bottom: 10px; position: relative; overflow: hidden; transform: scale(0.90);">
-        <img src="https=https://2073.pp.ua/img/morda.svg" alt="Інструменти" style="width: 140px; height: 140px; position: relative; z-index: 1; border: 2px solid #FFAB91; border-radius: 8px; transition: opacity 0.3s;">
-        <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFAB91; opacity: 0; z-index: 0;"></span>
-    </a>
-</div
+        <div style="text-align: center;">
+            <a href="https://2073.pp.ua" style="text-decoration: none; display: inline-block; margin-bottom: 10px; position: relative; overflow: hidden; transform: scale(0.90);">
+                <img src="https://2073.pp.ua/img/morda.svg" alt="Інструменти" style="width: 140px; height: 140px; position: relative; z-index: 1; border: 2px solid #FFAB91; border-radius: 8px; transition: opacity 0.3s;">
+                <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFAB91; opacity: 0; z-index: 0;"></span>
+            </a>
+        </div>
     </nav>
 </div>
