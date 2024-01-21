@@ -59,14 +59,12 @@
 </head>
 
 <body>
-  <a href="https://indposhyv.pp.ua/" style="background-color: #F57F16; position: absolute; top: 10px; left: 10px; padding: 10px; color: white; text-decoration: none;" rel="noopener noreferrer">Повернутись до майстерні</a>
-  <div class="container">
-    <img src="./img/pidval.svg" alt="Індпошив" class="image">
-    <h2 class="title">Завантажити файл бази знань</h2>
-    <button class="btn" onclick="forceDownload(this)" data-href="https://2073.pp.ua/output.pdf" download="output.pdf">
-      <i class="fa fa-download"></i> Завантажити
-    </button>
-  </div>
+        <div style="text-align: center;">
+            <a href="https://indposhyv.pp.ua" style="text-decoration: none; display: inline-block; margin-bottom: 10px; position: relative; overflow: hidden; transform: scale(0.90);">
+                <img src="https://2073.pp.ua/img/instrumenty.svg" alt="Інструменти" style="width: 140px; height: 140px; position: relative; z-index: 1; border: 2px solid #FFAB91; border-radius: 8px; transition: opacity 0.3s;">
+                <span style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #FFAB91; opacity: 0; z-index: 0;"></span>
+            </a>
+        </div>
   <script>
     function forceDownload(link) {
       var url = link.getAttribute("data-href");
